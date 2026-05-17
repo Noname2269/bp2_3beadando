@@ -35,7 +35,13 @@ void Zseton::kezel(event ev)
 {
     if (ev.type == ev_mouse && ev.button == btn_left)
     {
-        int col_index = (_x - 25) / 50;
-        _parent->action("oszlop_" + std::to_string(col_index));
+        if (ev.pos_y >= 70 && ev.pos_y <= 370 && ev.pos_x >= 30 && ev.pos_x <= 375)
+            {
+            if (felette(ev.pos_x, ev.pos_y))
+            {
+                int col_index = (_x - 25) / 50;
+                _parent->action("oszlop_" + std::to_string(col_index));
+            }
+        }
     }
 }

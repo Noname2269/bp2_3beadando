@@ -7,6 +7,7 @@ SOURCES += \
         jatekmester.cpp \
         main.cpp \
         graphics/graphics.cpp \
+        nyil.cpp \
         oswidget.cpp \
         oszlop.cpp \
         palya.cpp \
@@ -30,6 +31,7 @@ DEPENDPATH += $$PWD/SDL2
 
 HEADERS += \
     jatekmester.hpp \
+    nyil.hpp \
     oswidget.hpp \
     oszlop.hpp \
     palya.hpp \
