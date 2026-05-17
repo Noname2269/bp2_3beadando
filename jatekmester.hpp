@@ -12,7 +12,7 @@ public:
 
     void event_loop();
 
-    void widget_tar(OsWidget * widget);
+    void widget_tar(OsWidget * widgets);
 
     virtual void action(std::string id) = 0;
 
