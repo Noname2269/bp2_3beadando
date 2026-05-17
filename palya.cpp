@@ -1,12 +1,44 @@
 #include "palya.hpp"
+#include <string>
 
 using namespace genv;
+
+extern int aktualis_jatekos;
+extern bool jatek_vege;
+extern int gyoztes;
 
 Palya::Palya(JatekMester * parent, int x, int y, int sx, int sy) : OsWidget(parent,  x, y, sx, sy) {}
 
 void Palya::rajzol()
 {
+    gout << move_to(_x, _y) << color(30, 80, 220) << box(_sx, _sy);
 
+    gout << move_to(25, 35);
+    if (jatek_vege)
+    {
+        if (gyoztes == 1)
+        {
+            gout << color(255, 50, 50) << text("A PIROS jatekos NYERT!");
+        }
+
+        else
+        {
+            gout << color(255, 230, 50) << text("A SARGA jatekos NYERT!");
+        }
+    }
+
+    else
+    {
+        if (aktualis_jatekos == 1)
+        {
+            gout << color(255, 50, 50) << text("Piros jatekos kore kovetkezik...");
+        }
+
+        else
+        {
+            gout << color(255, 230, 50) << text("Sarga jatekos kore kovetkezik...");
+        }
+    }
 }
 
 void Palya::kezel(event ev)
