@@ -6,6 +6,7 @@ using namespace genv;
 
 extern int aktualis_jatekos;
 extern bool jatek_vege;
+extern bool dontetlen;
 
 Nyil::Nyil(JatekMester* parent, int x, int y, int sx, int sy) : OsWidget(parent, x, y, sx, sy), _lathato(false) {}
 
@@ -17,7 +18,7 @@ void Nyil::set_pozicio(int uj_x, bool lathato)
 
 void Nyil::rajzol()
 {
-    if (!_lathato || jatek_vege) return;
+    if (!_lathato || jatek_vege || dontetlen) return;
 
     if (aktualis_jatekos == 1) gout << color(255, 50, 50);
 
