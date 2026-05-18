@@ -12,6 +12,7 @@ using namespace genv;
 
 int jatek_rancs[7][6] = {0};
 int aktualis_jatekos = 1;
+int meccs_kezdo = 1;
 bool jatek_vege = false;
 int gyoztes = 0;
 bool dontetlen = false;
@@ -83,7 +84,10 @@ public:
             dontetlen = false;
             jatek_vege = false;
             gyoztes = 0;
-            aktualis_jatekos = 1;
+
+            meccs_kezdo = 3 - meccs_kezdo;
+
+            aktualis_jatekos = meccs_kezdo;
 
             nyil->set_pozicio(0, false);
 
