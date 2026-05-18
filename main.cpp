@@ -69,9 +69,13 @@ public:
     {
         if (id.rfind("eger_", 0) == 0)
         {
-            int mx = stoi(id.substr(5));
+            size_t elso_aláhúzás = id.find('_');
+            size_t masodik_aláhúzás = id.find('_', elso_aláhúzás + 1);
 
-            if (mx >= 25 && mx < 375)
+            int mx = stoi(id.substr(elso_aláhúzás + 1, masodik_aláhúzás - elso_aláhúzás - 1));
+            int my = stoi(id.substr(masodik_aláhúzás + 1));
+
+            if (mx >= 25 && mx < 375 && my >= 70 && my <= 370)
             {
                 int col = (mx - 25) / 50;
                 nyil->set_pozicio(25 + col * 50, true);

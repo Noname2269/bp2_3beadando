@@ -21,12 +21,12 @@ void Palya::rajzol()
     {
         if (gyoztes == 1)
         {
-            gout << color(255, 50, 50) << text("A PIROS jatekos NYERT!");
+            gout << color(255, 50, 50) << text("RED PLAYER WON!");
         }
 
         else
         {
-            gout << color(255, 230, 50) << text("A SARGA jatekos NYERT!");
+            gout << color(255, 230, 50) << text("YELLOW PLAYER WON!");
         }
     }
 
@@ -34,12 +34,12 @@ void Palya::rajzol()
     {
         if (aktualis_jatekos == 1)
         {
-            gout << color(255, 50, 50) << text("Piros jatekos kore kovetkezik...");
+            gout << color(255, 50, 50) << text("RED PLAYER'S TURN");
         }
 
         else
         {
-            gout << color(255, 230, 50) << text("Sarga jatekos kore kovetkezik...");
+            gout << color(255, 230, 50) << text("YELLOW PLAYER'S TURN");
         }
     }
 }

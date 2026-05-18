@@ -16,16 +16,24 @@ void JatekMester::event_loop()
     {
         if (ev.type == ev_mouse)
         {
-            action("eger_" + std::to_string(ev.pos_x));
+            action("eger_" + std::to_string(ev.pos_x) + "_" + std::to_string(ev.pos_y));
         }
 
         if (ev.type == ev_mouse && ev.button==btn_left)
         {
+            bool talalt_widgetet = false;
+
             for (size_t i=0;i<_widgets.size();i++) {
                 if (_widgets[i]->felette(ev.pos_x, ev.pos_y))
                 {
                     focus = i;
+                    talalt_widgetet = true;
                 }
+            }
+
+            if (!talalt_widgetet)
+            {
+                focus = -1;
             }
         }
 
