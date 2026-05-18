@@ -12,6 +12,7 @@ void JatekMester::event_loop()
 {
     event ev;
     int focus = -1;
+
     while(gin >> ev )
     {
         if (ev.type == ev_mouse)

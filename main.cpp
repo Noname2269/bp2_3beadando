@@ -13,6 +13,7 @@ int jatek_rancs[7][6] = {0};
 int aktualis_jatekos = 1;
 bool jatek_vege = false;
 int gyoztes = 0;
+bool dontetlen = false;
 
 class MyApp : public JatekMester
 {
@@ -67,6 +68,26 @@ public:
 
     void action(string id) override
     {
+        if (id == "ujraindit")
+        {
+            for (int i = 0; i < 7; ++i)
+            {
+                for (int j = 0; j < 6; ++j)
+                {
+                    jatek_rancs[i][j] = 0;
+                }
+            }
+
+            dontetlen = false;
+            jatek_vege = false;
+            gyoztes = 0;
+            aktualis_jatekos = 1;
+
+            nyil->set_pozicio(0, false);
+
+            return;
+        }
+
         if (id.rfind("eger_", 0) == 0)
         {
             size_t elso_aláhúzás = id.find('_');
@@ -89,7 +110,7 @@ public:
             return;
         }
 
-        if (jatek_vege) return;
+        if (jatek_vege || dontetlen) return;
 
         if (id.rfind("oszlop_", 0) == 0)
         {
@@ -117,7 +138,25 @@ public:
 
                 else
                 {
-                    aktualis_jatekos = (aktualis_jatekos == 1) ? 2 : 1;
+                    bool van_meg_hely = false;
+                    for (int i = 0; i < 7; ++i)
+                    {
+                        if (jatek_rancs[i][0] == 0)
+                        {
+                            van_meg_hely = true;
+                            break;
+                        }
+                    }
+
+                    if (!van_meg_hely)
+                    {
+                        dontetlen = true;
+                    }
+
+                    else
+                    {
+                        aktualis_jatekos = (aktualis_jatekos == 1) ? 2 : 1;
+                    }
                 }
             }
         }
