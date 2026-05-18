@@ -24,7 +24,8 @@ void JatekMester::event_loop()
         {
             bool talalt_widgetet = false;
 
-            for (size_t i=0;i<_widgets.size();i++) {
+            for (size_t i=0;i<_widgets.size();i++)
+            {
                 if (_widgets[i]->felette(ev.pos_x, ev.pos_y))
                 {
                     focus = i;

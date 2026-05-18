@@ -5,8 +5,9 @@
 
 class Nyil : public OsWidget
 {
-private:
+protected:
     bool _lathato;
+
 public:
     Nyil(JatekMester* parent, int x, int y, int sx, int sy);
 

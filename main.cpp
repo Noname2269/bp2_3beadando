@@ -5,6 +5,7 @@
 #include "zseton.hpp"
 #include "nyil.hpp"
 #include "jatekmester.hpp"
+#include <sstream>
 
 using namespace std;
 using namespace genv;
@@ -63,6 +64,7 @@ public:
 
             if (db >= 4) return true;
         }
+
         return false;
     }
 
@@ -88,13 +90,15 @@ public:
             return;
         }
 
-        if (id.rfind("eger_", 0) == 0)
+        if (id.find("eger_") == 0)
         {
-            size_t elso_aláhúzás = id.find('_');
-            size_t masodik_aláhúzás = id.find('_', elso_aláhúzás + 1);
+            string koordinatak = id.substr(5);
 
-            int mx = stoi(id.substr(elso_aláhúzás + 1, masodik_aláhúzás - elso_aláhúzás - 1));
-            int my = stoi(id.substr(masodik_aláhúzás + 1));
+            stringstream ss(koordinatak);
+            int mx, my;
+            char elvalaszto;
+
+            ss >> mx >> elvalaszto >> my;
 
             if (mx >= 25 && mx < 375 && my >= 70 && my <= 370)
             {
@@ -112,9 +116,14 @@ public:
 
         if (jatek_vege || dontetlen) return;
 
-        if (id.rfind("oszlop_", 0) == 0)
+        if (id.find("oszlop_") == 0)
         {
-            int col = stoi(id.substr(7));
+            string sorszam = id.substr(7);
+
+            stringstream ss(sorszam);
+            int col;
+            ss >> col;
+
             int row = -1;
 
             for (int j = 5; j >= 0; --j)
@@ -155,7 +164,7 @@ public:
 
                     else
                     {
-                        aktualis_jatekos = (aktualis_jatekos == 1) ? 2 : 1;
+                        aktualis_jatekos = 3 - aktualis_jatekos;
                     }
                 }
             }
